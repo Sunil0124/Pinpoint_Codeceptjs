@@ -42,10 +42,6 @@ module.exports = {
       suspendradiobtn: "Suspend for Location Matrix",
       suspendokbtn: "//a[@id='suspendForm:btnOk']",
       selopentrans6: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
-      holdbtn: "//a[@id='transForm:holdBtn']", //Hold Button
-      isee6: "Details",
-      holdokbtn: "//a[@id='transModifyForm:btnOkhold']",
-      selopentrans7: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
       commentsbtn: "//a[@id='transForm:commentsBtn']", //Comments Button
       isee7: "Comments",
       insertdatetime: "//input[@id='commentsForm:btnInsertDateTime']",
@@ -58,13 +54,6 @@ module.exports = {
       transactions1: ".transactions",
       processview1: "Process/View",
       selopentrans9: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
-      copyaddbtn: "//a[@id='transForm:copyAddBtn']", //Copy/Add
-      isee10: "Copy/Add",
-      adddriver: "//input[@id='matrixDetailForm:T_copyAddPanel_input0']",
-      //thentaxcode: "//select[@id='matrixDetailForm:thenTaxCodeC_code']",
-      cnlbtn: "//a[@id='matrixDetailForm:btnCancel']",
-      //copyaddokbtn: "//a[@id='matrixDetailForm:okBtn']",
-      selopentrans10: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
       advsortbtn: "//a[@id='transForm:advSortBtn']", //Advance Sort
       //isee11: "//span[contains(text(),'Sort Columns')]",
       sorting: "//tbody[@id='advancedSortForm:columnItemListId:tb']//tr[1]",
@@ -83,10 +72,6 @@ module.exports = {
       viewokbtn1: "//a[@id='purchaseTransLogForm:btnOk']",
       closebtn: "//a[@id='transLogForm:btnClose']",
       selopentrans12: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
-      matrixanalysisBtn: "//a[@id='transForm:matrixanalysisBtn']", //Matrix Analysis
-      //isee13: "//input[@id='transactionmatrixCompareForm:transactionid']",
-      closebtn1: "//a[@id='transactionmatrixCompareForm:btnClose']",
-
 
   },
 
@@ -96,13 +81,14 @@ module.exports = {
       I.click(this.locators.processview)
       I.waitForNavigation()
       I.click(this.locators.clearbtn)
-      I.selectOption(this.locators.transstatus, 'Open')
+      I.selectOption(this.locators.transstatus, 'Closed')
       I.click(this.locators.searchbtn)
       I.waitForElement(this.locators.selopentrans1, 10)
       //I.wait(10)
       I.click(this.locators.selopentrans1)
   },
-
+  //Split
+  //Process
   ReprocessButton(){
     I.click(this.locators.reprocessbtn)
     I.waitForNavigation()
@@ -111,7 +97,7 @@ module.exports = {
     I.waitForNavigation()
     I.click(this.locators.selopentrans2)
   },
-
+//Apply
   UpdateButton(){
     I.click(this.locators.updatebtn)
     I.waitForNavigation()
@@ -155,15 +141,6 @@ module.exports = {
     I.click(this.locators.suspendokbtn);
     I.waitForNavigation();
     I.click(this.locators.selopentrans6)
-  },
-
-  HoldButton(){
-    I.click(this.locators.holdbtn)
-    I.waitForNavigation()
-    I.see(this.locators.isee6);
-    I.click(this.locators.holdokbtn)
-    I.waitForNavigation();
-    I.click(this.locators.selopentrans7)
   },
 
   CommentsButton(){
@@ -224,11 +201,5 @@ module.exports = {
       I.click(this.locators.selopentrans12)
     },
 
-    MatrixAnalysis(){
-      I.click(this.locators.matrixanalysisBtn)
-      I.waitForNavigation()
-      //I.see(this.locators.isee13)
-      I.click(this.locators.closebtn1) 
-    }
 
 }

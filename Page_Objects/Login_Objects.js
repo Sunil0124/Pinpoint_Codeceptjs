@@ -13,6 +13,9 @@ module.exports = {
     username: "//input[@id='LoginForm:userControl']",
     password: "//input[@id='LoginForm:pwdControl']",
     login: "//a[@id='LoginForm:btnLogin']",
+    //db: "//select[@id='LoginForm:dbSelect']//option[2]",
+    //connect: "//a[@id='LoginForm:btnConnect']"
+
 
   },
 
@@ -20,6 +23,9 @@ module.exports = {
     I.fillField(this.locators.username, user_name);
     I.fillField(this.locators.password, Pass);
     I.click(this.locators.login);
+    //I.selectOption(this.locators.db);
+    //I.click(this.locators.connect);
+
 
   },
 

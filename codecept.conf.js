@@ -5,11 +5,11 @@ const { setHeadlessWhen } = require('@codeceptjs/configure');
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: './*_test.js',
+  tests: './Test/*_test.js',
   output: './output',
   helpers: {
     Puppeteer: {
-      url: 'https://23.253.186.150:8235/ncsts/stsLogin.jsf',
+      url: 'https://23.253.186.150:8235/ncsts/',
       show: true,
       windowSize: '1200x900',
       keepCookies: true,

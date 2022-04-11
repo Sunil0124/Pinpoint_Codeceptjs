@@ -96,14 +96,15 @@ module.exports = {
       I.click(this.locators.processview)
       I.waitForNavigation()
       I.click(this.locators.clearbtn)
-      I.selectOption(this.locators.transstatus, 'Open')
+      I.selectOption(this.locators.transstatus, 'Closed')
       I.click(this.locators.searchbtn)
       I.waitForElement(this.locators.selopentrans1, 10)
       //I.wait(10)
       I.click(this.locators.selopentrans1)
   },
-  ViewSplit(){},
-
+//ViewSplit
+//Split
+//Process
   ReprocessButton(){
     I.click(this.locators.reprocessbtn)
     I.waitForNavigation()
@@ -113,32 +114,6 @@ module.exports = {
     I.click(this.locators.selopentrans2)
   },
 
-  UpdateButton(){
-    I.click(this.locators.updatebtn)
-    I.waitForNavigation()
-    I.see(this.locators.isee2)
-    I.wait(5)
-    I.selectOption(this.locators.seltaxcode, '01000000.00000000 - CPN_seg')
-    I.click(this.locators.searchjuris)
-    I.waitForNavigation()
-    I.click(this.locators.seljuris)
-    I.wait(5)
-    I.click(this.locators.jurisokbtn)
-    I.waitForNavigation()
-    I.click(this.locators.updateokbtn)
-    I.waitForNavigation()
-    I.click(this.locators.selopentrans3)
-  },
-
-  EditButton(){
-    I.click(this.locators.editbtn)
-    I.waitForNavigation()
-    I.see(this.locators.isee3)
-    I.click(this.locators.editokbtn)
-    I.waitForNavigation()
-    I.click(this.locators.selopentrans4)
-  },
-
   ViewButton(){
     I.click(this.locators.viewbtn)
     I.waitForNavigation()
@@ -146,25 +121,6 @@ module.exports = {
     I.click(this.locators.viewokbtn)
     I.waitForNavigation()
     I.click(this.locators.selopentrans5)
-  },
-
-  SuspendButton(){
-    I.click(this.locators.suspendbtn)
-    I.waitForNavigation()
-    I.see(this.locators.isee5)
-    I.click(this.locators.suspendradiobtn)
-    I.click(this.locators.suspendokbtn);
-    I.waitForNavigation();
-    I.click(this.locators.selopentrans6)
-  },
-
-  HoldButton(){
-    I.click(this.locators.holdbtn)
-    I.waitForNavigation()
-    I.see(this.locators.isee6);
-    I.click(this.locators.holdokbtn)
-    I.waitForNavigation();
-    I.click(this.locators.selopentrans7)
   },
 
   CommentsButton(){
@@ -189,19 +145,6 @@ module.exports = {
     I.waitForNavigation()
     I.click(this.locators.selopentrans9)
   },
-
-    CopyAdd(){
-      I.click(this.locators.copyaddbtn)
-      I.waitForNavigation()
-      I.see(this.locators.isee10)
-      I.clearField(this.locators.adddriver)
-      I.fillField(this.locators.adddriver,'2test')
-      //I.selectOption(this.locators.thentaxcode)
-      I.click(this.locators.cnlbtn)
-      //I.click(this.locators.copyaddokbtn)
-      I.waitForNavigation()
-      I.click(this.locators.selopentrans10)
-    },
 
     AdvancedSort(){
       I.click(this.locators.advsortbtn)
