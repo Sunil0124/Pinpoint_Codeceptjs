@@ -9,7 +9,7 @@ Before(async ({ I }) => {
 });
 
 Scenario('ProcessView Open', ({ I }) => {
-    Processviewopen.OpenTrans()
+    Processviewopen.OpenTrans('Open')
     Processviewopen.ReprocessButton()
     //Processviewopen.UpdateButton()
     Processviewopen.EditButton()

@@ -14,7 +14,7 @@ Before(async ({ I }) => {
 Scenario('ProcessView Exempt', ({ I }) => {
     // var td = excel.read_from_excel('C:\\Users\\LADM09373\\Pinpoint\\Data\\Pinpoint_Data.xlsx', 'comnts');
     //td.forEach(function (value) {
-        Processviewexempt.OpenTrans()
+        Processviewexempt.OpenTrans('Exempt')
         Processviewexempt.ReprocessButton()
         //Processviewexempt.UpdateButton //(value.comments)
         Processviewexempt.EditButton()

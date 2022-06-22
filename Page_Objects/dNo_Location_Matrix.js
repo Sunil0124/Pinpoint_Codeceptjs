@@ -13,24 +13,26 @@ module.exports = {
       transactions: ".transactions",
       processview: "Process/View",
       clearbtn: "//a[@id='filterForm:btnClear']",
-      transstatus: "//select[@id='filterForm:statusMenu']",
       searchbtn: "//a[@id='filterForm:searchBtn']",
       selopentrans1: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
-      splitbutton: "//a[@id='transForm:splitBtn']", //split button
-      vieworiginal: "//a[@id='matrixDetailForm:viewOriginalBtn']",
-      okbutton: "//a[@id='purchaseTransForm:btnOk']",
-      globaljursplit: "//a[@id='matrixDetailForm:jurisSplitBtn']",
-      jurstiction: "//input[@id='matrixDetailForm:fieldsearch_0']",
-      seljurs:"//div[@id='table-four-content']//table//tbody//tr",
-      jurisokbutton: "//a[@id='jurisdictionform:okBtn']",
-      allocpercent: "//input[@id='matrixDetailForm:fieldvalueWhen_0']",
-      okbtn: "//a[@id='matrixDetailForm:okBtn']",
-      cnclbtn: "//a[@id='matrixDetailForm:cancelBtn']",
-      selectloctrans: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
+      splitbtn: "//a[@id='transForm:splitBtn']",//split
+      processbtn: "//a[@id='transForm:processBtn']",//processbutton
+      //isee: "//span[@id='matrixDetailForm:L_viewPanel_label0']",
+      jursearchbtn: "//input[@id='matrixDetailForm:jurisInput_search']",
+      jursearch: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]",
+      jurokbtn: "//a[@id='jurisdictionform:okBtn']",
+      processokbtn: "//a[@id='matrixDetailForm:okBtn']",
+      selectloctran: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
       reprocessbtn: "//a[@id='transForm:reprocessBtn']", //reprocessbutton
       isee1: "Gl Company Nbr:",
       reprocessokbtn: "//a[@id='transModifyForm:btnOkreprocess']",
       selopentrans2: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
+      applybtn: "//a[@id='transForm:applyLocationMatrixBtn']",//Apply
+      jurbtn:"//input[@id='applyLocationMatrixForm:jurisInput1_search']",
+      selectjur:"//div[@id='table-four-content']//table//tbody//tr[1]//td[1]",
+      okbtn:"//a[@id='jurisdictionform:okBtn']",
+      applyokbtn: "//a[@id='applyLocationMatrixForm:btnOk']",
+      selopentrans: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
       updatebtn: "//a[@id='transForm:updateBtn']", //update button
       isee2: "Gl Company Nbr:",
       seltaxcode: "//select[@id='transModifyForm:_taxcode_code']",
@@ -59,6 +61,13 @@ module.exports = {
       transactions1: ".transactions",
       processview1: "Process/View",
       selopentrans9: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
+      copyaddbtn: "//a[@id='transForm:copyAddBtn']", //Copy/Add
+      //isee10: "Copy/Add",
+      adddriver: "//input[@id='matrixDetailForm:T_copyAddPanel_input0']",
+      //thentaxcode: "//select[@id='matrixDetailForm:thenTaxCodeC_code']",
+      cnlbtn: "//a[@id='matrixDetailForm:btnCancel']",
+      //copyaddokbtn: "//a[@id='matrixDetailForm:okBtn']",
+      selopentrans10: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
       advsortbtn: "//a[@id='transForm:advSortBtn']", //Advance Sort
       //isee11: "//span[contains(text(),'Sort Columns')]",
       sorting: "//tbody[@id='advancedSortForm:columnItemListId:tb']//tr[1]",
@@ -84,43 +93,36 @@ module.exports = {
 
   },
 
-  OpenTrans(){
+  OpenTrans(value){
       I.waitForNavigation()
       I.moveCursorTo(this.locators.transactions)
       I.click(this.locators.processview)
       I.waitForNavigation()
       I.click(this.locators.clearbtn)
-      I.selectOption(this.locators.transstatus, 'No Location Matrix')
+      if(value.includes('All')){I.selectOption('filterForm:statusMenu','All')}
+      else if (value.includes('No Location Matrix')){I.selectOption('filterForm:statusMenu','USL')}
       I.click(this.locators.searchbtn)
       I.waitForElement(this.locators.selopentrans1, 10)
       //I.wait(10)
       I.click(this.locators.selopentrans1)
   },
 
-  SplitButton(){
-    I.click(this.locators.splitbutton)
+  //Split
+  ProcessButton(){
+    I.click(this.locators.processbtn)
     I.waitForNavigation()
-    I.click(this.locators.vieworiginal)
+    //I.see(this.locators.isee)
+    I.click(this.locators.jursearchbtn)
     I.waitForNavigation()
-    I.click(this.locators.okbutton)
+    I.click(this.locators.jursearch)
+    I.wait(2)
+    I.click(this.locators.jurokbtn)
     I.waitForNavigation()
-    I.click(this.locators.globaljursplit)
+    I.click(this.locators.processokbtn)
     I.waitForNavigation()
-    I.click(this.locators.jurstiction)
-    I.waitForNavigation()
-    I.click(this.locators.seljurs)
-    I.click(this.locators.jurisokbutton)
-    I.waitForNavigation()
-    I.clearField(this.locators.allocpercent)
-    I.fillField(this.locators.allocpercent, 1)
-    I.click(this.locators.okbtn)
-    I.waitForNavigation()
-    I.click(this.locators.cnclbtn)
-    I.click(this.locators.selectloctrans)
+    I.click(this.locators.selectloctran)
+    },  
 
-
-  },
-  //ProcessButton()
   ReprocessButton(){
     I.click(this.locators.reprocessbtn)
     I.waitForNavigation()
@@ -129,7 +131,20 @@ module.exports = {
     I.waitForNavigation()
     I.click(this.locators.selopentrans2)
   },
- //Apply
+  ApplyButton(){
+    I.click(this.locators.applybtn)
+    I.waitForNavigation()
+    I.click(this.locators.jurbtn)
+    I.waitForNavigation()
+    I.click(this.locators.selectjur)
+    I.wait(5)
+    I.click(this.locators.okbtn)
+    I.waitForNavigation()
+    I.click(this.locators.applyokbtn)
+    I.waitForNavigation()
+    I.click(this.locators.selopentrans)
+},
+
   UpdateButton(){
     I.click(this.locators.updatebtn)
     I.waitForNavigation()
@@ -165,16 +180,6 @@ module.exports = {
     I.click(this.locators.selopentrans5)
   },
 
-
-  HoldButton(){
-    I.click(this.locators.holdbtn)
-    I.waitForNavigation()
-    I.see(this.locators.isee6);
-    I.click(this.locators.holdokbtn)
-    I.waitForNavigation();
-    I.click(this.locators.selopentrans7)
-  },
-
   CommentsButton(){
     I.click(this.locators.commentsbtn)
     I.waitForNavigation()
@@ -197,6 +202,19 @@ module.exports = {
     I.waitForNavigation()
     I.click(this.locators.selopentrans9)
   },
+  CopyAdd(){
+      I.wait(3)
+      I.click(this.locators.copyaddbtn)
+      I.waitForNavigation()
+      //I.see(this.locators.isee10)
+      I.clearField(this.locators.adddriver)
+      I.fillField(this.locators.adddriver,'test')
+      //I.selectOption(this.locators.thentaxcode)
+      I.click(this.locators.cnlbtn)
+      //I.click(this.locators.copyaddokbtn)
+      I.waitForNavigation()
+      I.click(this.locators.selopentrans10)
+    },
 
     AdvancedSort(){
       I.click(this.locators.advsortbtn)
@@ -232,8 +250,7 @@ module.exports = {
       I.waitForNavigation() 
       I.click(this.locators.selopentrans12)
     },
-
-    MatrixAnalysis(){
+    MatrixAnalysis(){ 
       I.click(this.locators.matrixanalysisBtn)
       I.waitForNavigation()
       //I.see(this.locators.isee13)

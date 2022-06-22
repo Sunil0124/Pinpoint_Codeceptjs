@@ -13,7 +13,6 @@ module.exports = {
       transactions: ".transactions",
       processview: "Process/View",
       clearbtn: "//a[@id='filterForm:btnClear']",
-      transstatus: "//select[@id='filterForm:statusMenu']",
       searchbtn: "//a[@id='filterForm:searchBtn']",
       selopentrans1: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
       reprocessbtn: "//a[@id='transForm:reprocessBtn']", //reprocessbutton
@@ -90,13 +89,14 @@ module.exports = {
 
   },
 
-  OpenTrans(){
+  OpenTrans(value){
       I.waitForNavigation()
       I.moveCursorTo(this.locators.transactions)
       I.click(this.locators.processview)
       I.waitForNavigation()
       I.click(this.locators.clearbtn)
-      I.selectOption(this.locators.transstatus, '      Closed')
+      if(value.includes('All')){I.selectOption('filterForm:statusMenu','All')}
+      else if (value.includes('Closed')){I.selectOption('filterForm:statusMenu','PC')}
       I.click(this.locators.searchbtn)
       I.waitForElement(this.locators.selopentrans1, 10)
       //I.wait(10)

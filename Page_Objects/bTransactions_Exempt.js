@@ -13,8 +13,6 @@ module.exports = {
       transactions: ".transactions",
       processview: "Process/View",
       clearbtn: "//a[@id='filterForm:btnClear']",
-      transstatus: "//select[@name='filterForm:statusMenu']",
-      test: "//option[@value='PE']",
       searchbtn: "//a[@id='filterForm:searchBtn']",
       selopentrans1: "//div[@id='table-four-content']//table//tbody//tr[1]//td[1]//input",
       reprocessbtn: "//a[@id='transForm:reprocessBtn']", //reprocessbutton
@@ -91,20 +89,15 @@ module.exports = {
 
   },
 
-  OpenTrans(){
+  OpenTrans(value){
       I.waitForNavigation()
       I.moveCursorTo(this.locators.transactions)
       I.click(this.locators.processview)
       I.waitForNavigation()
       I.click(this.locators.clearbtn)
       I.wait(3)
-      I.selectOption
-      pause()
-      // I.click('#filterForm:statusMenu');
-      // let delivery = locate ('//select[@name="filterForm:statusMenu"]//option').at(3);
-      // I.click (delivery);
-      //I.click(this.locators.transstatus)
-      //I.click(this.locators.test)
+      if(value.includes('All')){I.selectOption('filterForm:statusMenu','All')}
+      else if (value.includes('Exempt')){I.selectOption('filterForm:statusMenu','PE')}
       I.click(this.locators.searchbtn)
       I.waitForElement(this.locators.selopentrans1, 20)
       //I.wait(10)

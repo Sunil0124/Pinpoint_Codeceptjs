@@ -9,7 +9,7 @@ exports.config = {
   output: './output',
   helpers: {
     Puppeteer: {
-      url: 'https://23.253.186.150:8235/ncsts/',
+      url: 'https://23.253.186.150:8235/ncsts/stsLogin.jsf',
       show: true,
       windowSize: '1200x900',
       keepCookies: true,
